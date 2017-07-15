@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>form</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="external/jquery/jquery.js"></script>
+		<script src="jquery-ui.min.js"></script>
+		<link rel="stylesheet" href="jquery-ui.min.css">
+		<script>
+			$(function(){$("#date").datepicker();});
+		</script>
+		<style>
+			fieldset
+			{
+				width: 300px;
+			}
+		</style>
+</head>
+<body>
+<h1>create an account</h1>
+<fieldset>
+<legend>user details</legend>
+<label>First Name : </label>
+<input id="name" type="text" name="name"><br><br>
+<label>Sur Name : </label>
+<input id="sname" type="text" name="surname"><br><br>
+<label>Email :</label>
+<input id="email" type="Email" name="Email"><br><br>
+<label>Password :</label>
+<input id="pwd" type="password">
+	</fieldset>
+	<fieldset>
+		<legend>Gender :</legend>
+		<input id="male" type="radio" name="gender" value="male">Male
+		<input id="female" type="radio" name="gender" value="female">Female
+	</fieldset>
+	<fieldset><legend>Date of Birth :</legend>
+	<input id="date" type="text" name="date">
+	</fieldset>
+	<fieldset><legend>Education :</legend>
+	<input id="ug" type="checkbox" name="UG">UG
+	<input id="pg" type="checkbox" name="PG">PG
+	</fieldset><br>
+	<input type="Button" name="submit" value="submit" onclick="validate()">
+	<script>
+		function validate()
+		{
+			var name = document.getElementById('name').value;
+			var email= document.getElementById("email").value;
+			var password=document.getElementById("pwd").value;
+			var date=document.getElementById("date").value;
+			var sname=document.getElementById("sname").value;
+			if (name=='') 
+			{
+				alert("name is empty");
+				document.getElementById("name").focus();
+				return false;
+			}
+			else if(sname=="")
+			{
+				alert("enter your surname");
+				document.getElementById("sname").focus();
+			}
+			else if(!document.getElementById("male").checked && !document.getElementById("female").checked) 
+			{
+				alert("Gender not selected");
+			}
+			else if (email=="")
+			 {
+			 	alert("email is not correct");
+			 	document.getElementById("email");
+			 }
+			 else if(!document.getElementById("ug").checked && !document.getElementById("pg").checked)
+			 {
+			 	alert("select your education");
+			 	return false;
+			 }
+			 else if(password=="" || password.length<6)
+			 {
+			 	alert("enter password");
+			 	document.getElementById("pwd").focus();
+			 	return false;
+			 }
+			 else if(date=="")
+			 {
+			 	alert("select date");
+			 	document.getElementById("date").focus();
+			 	return false;
+			 }
+			 else{
+			 	alert("Good to go");
+			 	return true;
+			 }
+		}
+	</script>
+</body>
+</html>
